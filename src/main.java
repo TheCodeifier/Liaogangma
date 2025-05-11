@@ -46,27 +46,27 @@ class SMSSender extends MessageSender {
     }
 }
 
-class PushSender extends MessageSender {
+class PushNotificationSender extends MessageSender {
     @Override
     protected void connect() {
-        System.out.println("Push: Verbinden met pushserver...");
+        System.out.println("Pushmelding: Verbinden met pushserver...");
     }
 
     @Override
     protected void sendMessage() {
-        System.out.println("Push: Bericht verzenden...");
+        System.out.println("Pushmelding: Bericht verzenden...");
     }
 
     @Override
     protected void disconnect() {
-        System.out.println("Push: Verbinding verbreken.");
+        System.out.println("Pushmelding: Verbinding verbreken.");
     }
 }
 
 class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Kies een methode om het bericht te versturen: email, sms, of push");
+        System.out.println("Kies een methode om het bericht te versturen: email, SMS, of pushmelding");
         String keuze = scanner.nextLine().toLowerCase();
 
         MessageSender sender;
@@ -75,11 +75,11 @@ class Main {
             case "email":
                 sender = new EmailSender();
                 break;
-            case "sms":
+            case "SMS":
                 sender = new SMSSender();
                 break;
             case "push":
-                sender = new PushSender();
+                sender = new PushNotificationSender();
                 break;
             default:
                 System.out.println("Ongeldige keuze.");
